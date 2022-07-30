@@ -1,0 +1,19 @@
+{
+  "name": "scatterplot",
+  "version": "1.0.0",
+  "description": "scatter plot graph a challenge project by freecodecamp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "scatterplot",
+    "graph",
+    "javascript",
+    "html",
+    "css",
+    "freecodecamp"
+  ],
+  "author": "Owen A",
+  "license": "ISC"
+}
