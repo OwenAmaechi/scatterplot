@@ -27,30 +27,22 @@ svg {
 	font-size: 1em;
 	padding: 10px;
 	border-radius: 5px;
-	background-color: rgb(169, 169, 182);
+	background-color: rgba(169, 169, 182, 0.7);
 	box-shadow: rgba(81, 81, 236, 0.35) 0px 5px 15px;
 }
 #tooltip:hover {
 	background-color: white;
 }
-
-/* .bar {
-	fill: rgb(81, 81, 236);
+#legend {
+	display: flex;
 }
-
-
-/* #tooltip {
-	position: absolute;
-	width: 200px;
-	height: auto;
-
-	
-	
-	 border-radius: 5px;
-	color: white;
-	background-color: rgb(81, 81, 236);
-	box-shadow: rgba(81, 81, 236, 0.35) 0px 5px 15px;
-	
-	opacity: 0; 
-	
-}  */
+.doping_no {
+	width: 15px;
+	height: 15px;
+	background-color: rgba(248, 202, 117, 0.9);
+}
+.doping_yes {
+	width: 15px;
+	height: 15px;
+	background-color: rgba(112, 112, 248, 0.9);
+}

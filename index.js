@@ -37,6 +37,7 @@ const drawCanvas = () => {
 		.attr('font-size', '1.2em')
 		.text('Time in Minutes')
 		.attr('transform', `translate(-280,${h / 4}) rotate(-90)`);
+	drawLegend();
 };
 const generateScale = () => {
 	xScale = d3
@@ -71,46 +72,70 @@ const drawPoints = () => {
 			}
 		})
 		.on('mouseover', (event, item) => {
-			const [x, y] = d3.pointer(event);
 			tooltip
 				.transition()
-				.duration(100)
+				.duration(200)
 				.style('visibility', 'visible')
 				.attr('data-year', item['Year'])
-				.style('left', x + '10px')
-				.style('top', y + 'px');
+				.style('left', event.pageX + 10 + 'px')
+				.style('top', event.pageY + 'px');
 
 			if (item['Doping'] !== '') {
-				tooltip.html(
-					item['Name'] +
-						' : ' +
-						item['Nationality'] +
-						'<br/>' +
-						'Year: ' +
-						item['Year'] +
-						', ' +
-						'Time: ' +
-						item['Time'] +
-						'<br/><br/>' +
-						item['Doping']
-				);
+				// has a doping allegation
+				tooltip
+					.html(
+						item['Name'] +
+							' : ' +
+							item['Nationality'] +
+							'<br/>' +
+							'Year: ' +
+							item['Year'] +
+							', ' +
+							'Time: ' +
+							item['Time'] +
+							'<br/><br/>' +
+							item['Doping']
+					)
+					.style('background-color', 'rgba(112, 112, 248,0.9)');
 			} else {
-				tooltip.html(
-					item['Name'] +
-						' : ' +
-						item['Nationality'] +
-						'<br/>' +
-						'Year: ' +
-						item['Year'] +
-						', ' +
-						'Time: ' +
-						item['Time']
-				);
+				tooltip
+					.html(
+						item['Name'] +
+							' : ' +
+							item['Nationality'] +
+							'<br/>' +
+							'Year: ' +
+							item['Year'] +
+							', ' +
+							'Time: ' +
+							item['Time']
+					)
+					.style('background-color', 'rgba(248, 202, 117, 0.9)');
 			}
 		})
 		.on('mouseout', (item) => {
 			tooltip.style('visibility', 'hidden');
 		});
+};
+
+const drawLegend = () => {
+	canvas
+		.append('rect')
+		.attr('x', 700)
+		.attr('y', 200)
+		.attr('width', 15)
+		.attr('height', 15)
+		.style('fill', 'blue');
+	canvas
+		.append('rect')
+		.attr('x', 700)
+		.attr('y', 218)
+		.attr('width', 15)
+		.attr('height', 15)
+		.style('fill', 'orange');
+
+	canvas.append('text').attr('x', 570).attr('y', 210).text('Doping Allegations');
+	canvas.append('text').attr('x', 546).attr('y', 230).text('No Doping Allegations');
 };
 
 const generateAxes = () => {
